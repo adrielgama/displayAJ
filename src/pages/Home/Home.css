@@ -2,16 +2,67 @@
   width: 100%;
   height: 100vh;
   background-color: hsl(0, 0%, 9%);
+  color: hsl(0, 0%, 9%);
+
+  display: grid;
+  place-items: center;
+}
+
+.container__login {
+  width: 50vh;
+  height: 50vh;
+  padding: 20px;
+  background-color: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  margin: 5vh;
+  border-radius: 5px;
+}
+
+.container__login form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.box__login {
+  margin: 5vh 0 1vh 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.box__login input {
+  width: 20vh;
+  height: 4vh;
+  margin: 0.6vh;
+  padding: 10px;
+
+  border: none;
+  border-radius: 8px;
+
+  background-color: hsl(0, 0%, 89%);
+}
+
+.btn__login {
+  width: 20vh;
+  height: 4vh;
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  background-color: hsl(0, 0%, 9%);
   color: #fff;
+  transition: ease-in 0.3s;
 }
-
-.token {
-  width: 200px;
-  height: 100vh;
-}
-
-.token p {
-  font-size: 0.6rem;
-  font-weight: 100;
-  color: hsl(202, 83%, 56%);
+.btn__login:hover {
+  background-color: hsl(0, 0%, 15%);
 }
