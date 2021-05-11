@@ -1,62 +1,34 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
-import axios from "axios";
+import { Link, withRouter } from "react-router-dom";
+// import axios from "axios";
+
+import api from "../../services/api";
+import { login } from "../../services/auth";
 
 import "./Home.css";
 
 const Home = () => {
-  const [token, setToken] = useState("");
-  const url = "https://guaibim.ajsy.com.br/api/";
-  // const [id, setId] = useState(0);
-  // const [user, setUser] = useState("");
-  // const [pass, setPass] = useState("");
-  const [status, setStatus] = useState([]);
+  const [id, setId] = useState(0);
+  const [user, setUser] = useState("");
+  const [pass, setPass] = useState("");
+  const [history, setHistory] = useState();
 
-  const [loading, setLoading] = useState(false);
-
-  ///*
-  React.useEffect(() => {
-    axios({
-      method: "POST",
-      url: `${url}Authentication`,
-      data: {
-        branchId: 1,
-        usuario: "Guaibim",
-        senha: "Gua@123",
-      },
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((res) => {
-      setToken(res.data.token);
-      setStatus(res.data.status);
-      console.log(status);
-      setLoading("Loaging axios", true);
-      console.log(loading);
-      console.log(token);
-      //console.log(res.data);
-    });
-  }, [loading, token, status]);
-  //*/
-
-  console.log(status);
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-  };
-
-  /*const handleLogin = (e) => {
-    e.preventDefault();
-
-    axios({
-      method: "GET",
-      url: `${url}Usuarios/1`,
-      headers: {
-          Authorization: `Bearer ${token}`
+    if (!id || !user || !pass) {
+      alert("Preencha todas as opções!");
+    } else {
+      try {
+        const response = await api.post("Authentication", {
+          data: { id, user, pass },
+        });
+        login(response.data.token);
+        setHistory(history.pushState("/users"));
+      } catch (err) {
+        console.log(err);
       }
-    }).then((response) => {
-      console.log(response)
-    })
-  };*/
+    }
+  };
 
   const handleId = (e) => {
     e.preventDefault();
@@ -82,9 +54,24 @@ const Home = () => {
           <h1>Faça seu logon</h1>
 
           <div className="box__login">
-            <input type="number" placeholder="branchId" onChange={handleId} />
-            <input type="text" placeholder="usuario" onChange={handleUser} />
-            <input type="password" placeholder="senha" onChange={handlePass} />
+            <input
+              type="number"
+              placeholder="branchId"
+              onChange={handleId}
+              required
+            />
+            <input
+              type="text"
+              placeholder="usuario"
+              onChange={handleUser}
+              required
+            />
+            <input
+              type="password"
+              placeholder="senha"
+              onChange={handlePass}
+              required
+            />
           </div>
           <button className="btn__login" type="submit">
             Login
