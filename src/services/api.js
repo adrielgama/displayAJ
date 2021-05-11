@@ -1,18 +1,24 @@
 import axios from "axios";
-import { getToken } from "./auth";
+// import React from "react";
+// import { getToken } from "./auth";
 
 const api = axios.create({
   baseURL: "https://guaibim.ajsy.com.br/api/",
 });
 
-api.interceptors.request.use(async (config) => {
-  const token = getToken();
-  if (token) {
-    config.headers.Authentication = `Bearer ${token}`;
-  }
-  return config;
-});
+// api.interceptors.request.use(async (config) => {
+//   const token = getToken();
+//   if (token) {
+//     config.headers.Authentication = `Bearer ${token}`;
+//   }
+//   // console.log(token);
+//   return config;
+// });
 
+// export const Post = () => {
+//   const [token, setToken] = React.useState("");
+
+// const url = "https://guaibim.ajsy.com.br/api/";
 // React.useEffect(() => {
 //   axios({
 //     method: "POST",
@@ -27,10 +33,10 @@ api.interceptors.request.use(async (config) => {
 //     },
 //   }).then((res) => {
 //     setToken(res.data.token);
-//     setStatus(res.data.status);
-//     setLoading("Loaging axios", true);
 //     localStorage.setItem("token", token);
+//     console.log(res.data);
 //   });
-// }, [loading, token, status]);
+// }, [token]);
+// };
 
 export default api;
