@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import React from "react";
 
-import useToken from "./services/auth";
+// import useToken from "./services/auth";
 
 import Login from "./pages/Login/Login";
 import Users from "./pages/Users/Users";
@@ -29,11 +29,11 @@ import Users from "./pages/Users/Users";
 // );
 
 const Routes = () => {
-  const { token, setToken } = useToken();
+  // const { token, setToken } = useToken();
 
-  if (!token) {
-    return <Login setToken={setToken} />;
-  }
+  // if (!token) {
+  //   return <Login setToken={setToken} />;
+  // }
 
   return (
     <BrowserRouter>
