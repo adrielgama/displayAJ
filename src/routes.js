@@ -1,7 +1,7 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import React from "react";
 
-// import useToken from "./services/auth";
+import { isAuth } from "./controller/Auth/auth";
 
 import Login from "./pages/Login/Login";
 import Users from "./pages/Users/Users";
@@ -15,18 +15,18 @@ import Users from "./pages/Users/Users";
 //   return userToken?.token;
 // }
 
-// const PrivateRoute = ({ component: Component, ...rest }) => (
-//   <Route
-//     {...rest}
-//     render={(props) =>
-//       isAuth() ? (
-//         <Component {...props} />
-//       ) : (
-//         <Redirect to={{ pathname: "/", state: { from: props.location } }} />
-//       )
-//     }
-//   />
-// );
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={(props) =>
+      isAuth() ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+      )
+    }
+  />
+);
 
 const Routes = () => {
   // const { token, setToken } = useToken();
@@ -39,8 +39,8 @@ const Routes = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Login} />
-        <Route path="/users" component={Users} />
         {/* <Route path="/users" component={Users} /> */}
+        <PrivateRoute path="/users" component={Users} />
         <Route path="*" component={() => <h1>Page not found</h1>} />
       </Switch>
     </BrowserRouter>

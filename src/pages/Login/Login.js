@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 // import { Link, withRouter } from "react-router-dom";
 // import api from "../../services/api";
 
+import { login } from "../../controller/Auth/auth";
 import "./Login.css";
 
 const url = "https://guaibim.ajsy.com.br/api/";
@@ -21,6 +23,8 @@ async function generateToken(token) {
     },
   }).then((res) => {
     // console.log(res.data.token);
+    // console.log(res.data.id);
+    login(res.data.token);
     localStorage.setItem("token", res.data.token);
     // console.log(res.data);
   });
@@ -30,17 +34,33 @@ const Login = () => {
   const [id, setId] = useState(1);
   const [user, setUser] = useState();
   const [pass, setPass] = useState();
+  // const [userAuth, setUserAuth] = useState(false);
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    generateToken({
-      data: {
-        branchId: id,
-        usuario: user,
-        senha: pass,
-      },
-    });
+    try {
+      await generateToken({
+        data: {
+          branchId: id,
+          usuario: user,
+          senha: pass,
+        },
+      });
+      localStorage.setItem("user", user);
+      history.push("/users");
+    } catch (err) {
+      console.log(err);
+    }
+
+    // generateToken({
+    //   data: {
+    //     branchId: id,
+    //     usuario: user,
+    //     senha: pass,
+    //   },
+    // });
   };
 
   return (
