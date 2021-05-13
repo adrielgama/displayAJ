@@ -8,7 +8,9 @@ const Header = () => {
   return (
     <>
       <div className="container__header">
-        <h1>AJ - Display</h1>
+        <Link to="/users" className="link__title">
+          <h1>AJ - Display</h1>
+        </Link>
         <div className="right__nav__content">
           <div className="nav__header">
             <ul>
@@ -35,9 +37,9 @@ const Header = () => {
             </ul>
           </div>
           <div className="nav__exit">
-            <IoExitOutline />
-            <p>{localStorage.getItem("user")},</p>
+            <p>Olá {localStorage.getItem("user")},</p>
             <p>sair</p>
+            <IoExitOutline />
           </div>
         </div>
       </div>
