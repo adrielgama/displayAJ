@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-// import { Link, withRouter } from "react-router-dom";
-// import api from "../../services/api";
 
 import { login } from "../../controller/Auth/auth";
 import "./Login.css";
@@ -49,18 +47,10 @@ const Login = () => {
         },
       });
       localStorage.setItem("user", user);
-      history.push("/users");
+      history.push("/home");
     } catch (err) {
       console.log(err);
     }
-
-    // generateToken({
-    //   data: {
-    //     branchId: id,
-    //     usuario: user,
-    //     senha: pass,
-    //   },
-    // });
   };
 
   return (

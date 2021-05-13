@@ -4,7 +4,7 @@ import React from "react";
 import { isAuth } from "./controller/Auth/auth";
 
 import Login from "./pages/Login/Login";
-import Users from "./pages/Users/Users";
+import Home from "./pages/Home/Home";
 import Estoque from "./pages/Estoque/Estoque";
 
 // function setToken(userToken) {
@@ -41,7 +41,7 @@ const Routes = () => {
       <Switch>
         <Route path="/" exact component={Login} />
         {/* <Route path="/users" component={Users} /> */}
-        <PrivateRoute path="/users" component={Users} />
+        <PrivateRoute path="/home" component={Home} />
         <PrivateRoute path="/estoque" component={Estoque} />
         <Route path="*" component={() => <h1>Page not found</h1>} />
       </Switch>

@@ -7,6 +7,3 @@ console.log(isAuth());
 export const login = (token) => {
   localStorage.setItem(TOKEN_AUTH, token);
 };
-export const logout = () => {
-  localStorage.removeItem(TOKEN_AUTH);
-};

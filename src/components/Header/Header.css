@@ -32,9 +32,15 @@
   margin-left: 15vh;
 }
 
+.nav__exit button {
+  background-color: transparent;
+  border: none;
+}
+
 .nav__exit svg {
+  font-size: 1.5rem;
   color: hsl(209, 82%, 52%);
-  transition: ease-in-out 0.2s;
+  transition: ease-in-out 0.15s;
   cursor: pointer;
 }
 
@@ -42,7 +48,24 @@
   color: hsl(0, 90%, 61%);
 }
 
+.logout__ {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  text-decoration: none;
+  color: initial;
+}
+
+.logout__:hover {
+  text-decoration: underline;
+}
+
 .nav__exit p {
+  font-size: 0.9rem;
+  margin-right: 1.2vh;
+}
+.nav__exit span {
+  cursor: pointer;
   font-size: 0.9rem;
   margin-right: 1.2vh;
 }
@@ -73,8 +96,8 @@
   color: hsl(0, 0%, 23%);
   padding: 14px 16px;
   background-color: inherit;
-  font-family: inherit; /* Important for vertical align on mobile phones */
-  margin: 0; /* Important for vertical align on mobile phones */
+  font-family: inherit; /* Vertical align on mobile */
+  margin: 0; /* Vertical align on mobile */
 
   display: flex;
   align-items: center;

@@ -1,0 +1,53 @@
+.list__cards {
+  /* width: 100%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.list__cards ul {
+  /* width: 80%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.list__cards li {
+  width: 40vh;
+  height: 30vh;
+  margin: 10px;
+  padding: 10px;
+  background-color: hsl(0, 0%, 18%);
+  border-radius: 10px;
+  box-shadow: 8px 10px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
+.list__cards h1 {
+  /* color: hsl(0, 0%, 100%); */
+  color: hsl(209, 100%, 74%);
+  font-size: 0.9rem;
+}
+
+.list__cards p {
+  margin-left: 10px;
+  font-weight: 400;
+  font-size: 0.9rem;
+  /* color: hsl(209, 100%, 74%); */
+  color: hsl(0, 0%, 100%);
+}
+
+.data__list p {
+  margin: 0 0 10px 0;
+}
+
+.container__list div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
