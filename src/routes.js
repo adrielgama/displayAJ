@@ -6,6 +6,8 @@ import { isAuth } from "./controller/Auth/auth";
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
 import Estoque from "./pages/Estoque/Estoque";
+import ListaItens from "./pages/ListaItens/ListaItens";
+import ItensConferidos from "./pages/ItensConferidos/ItensConferidos";
 
 // function setToken(userToken) {
 //   sessionStorage.setItem("token", JSON.stringify(userToken));
@@ -43,6 +45,8 @@ const Routes = () => {
         {/* <Route path="/users" component={Users} /> */}
         <PrivateRoute path="/home" component={Home} />
         <PrivateRoute path="/estoque" component={Estoque} />
+        <PrivateRoute path="/lista-itens" component={ListaItens} />
+        <PrivateRoute path="/itens-conferidos" component={ItensConferidos} />
         <Route path="*" component={() => <h1>Page not found</h1>} />
       </Switch>
     </BrowserRouter>

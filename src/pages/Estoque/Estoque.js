@@ -41,26 +41,17 @@ const Estoque = () => {
     } catch (err) {
       console.log(err);
     }
-    // return await axios({
-    //   method: "GET",
-    //   url: `${url}Estoque/EstoqueQueue`,
-    //   //   timeout: 1000,
-    //   headers: {
-    //     Authorization: `Bearer ${token}`,
-    //   },
-    // }).then((res) => {
-    //   setQuery(res.data);
-    //   // console.log(res.data);
-    // });
   }
 
-  // estoqueQueue();
   const estoqueDebounce = debounce(estoqueQueue, 0);
 
   return (
     <div>
       <Header />
-      <div className="container__estoque">
+      <div
+        className="container__estoque"
+        // onClick={setTimeout(estoqueQueue, 2000)}
+      >
         <div className="btn__refresh">
           <button
             onClick={estoqueDebounce}

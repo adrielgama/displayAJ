@@ -25,10 +25,10 @@ const Header = () => {
               <Link to="/estoque">
                 <li>Estoque</li>
               </Link>
-              <Link to="/estoque/lista-itens">
+              <Link to="/lista-itens">
                 <li>Lista Itens</li>
               </Link>
-              <Link to="/estoque-conferidos">
+              <Link to="/itens-conferidos">
                 <li>Itens Conferidos</li>
               </Link>
               <div className="dropdown">
@@ -38,7 +38,7 @@ const Header = () => {
                 </button>
                 <div className="dropdown__content">
                   <Link to="/produtos/lista">Todos os Produtos</Link>
-                  <Link to="/produtos/id">Produto por ID</Link>
+                  <Link to="/produtos/sku">Produto por SKU</Link>
                   <Link to="/produtos/data">Produtos por Data</Link>
                 </div>
               </div>
