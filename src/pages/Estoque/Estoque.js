@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { BiRefresh } from "react-icons/bi";
 
 import Header from "../../components/Header/Header";
 import Result from "../../components/Result/Result";
@@ -11,31 +12,64 @@ const url = "https://guaibim.ajsy.com.br/api/";
 const Estoque = () => {
   const [query, setQuery] = useState([]);
 
+  const debounce = (fn, time) => {
+    let debounceId = 0;
+    return () => {
+      clearTimeout(debounceId);
+      debounceId = setTimeout(fn, time);
+    };
+  };
+
   async function estoqueQueue() {
     const token = localStorage.getItem("token");
 
-    // console.log(props);
-    return await axios({
-      method: "GET",
-      url: `${url}Estoque/EstoqueQueue`,
-      //   timeout: 1000,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((res) => {
-      //   console.log(res.data);
-      setQuery(res.data);
-      // console.log(res.data.id);
-      // console.log(res.data);
-    });
+    try {
+      return await axios({
+        method: "GET",
+        url: `${url}Estoque/EstoqueQueue`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((res) => {
+          setQuery(res.data);
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+    // return await axios({
+    //   method: "GET",
+    //   url: `${url}Estoque/EstoqueQueue`,
+    //   //   timeout: 1000,
+    //   headers: {
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    // }).then((res) => {
+    //   setQuery(res.data);
+    //   // console.log(res.data);
+    // });
   }
-  estoqueQueue();
-  console.log(query);
+
+  // estoqueQueue();
+  const estoqueDebounce = debounce(estoqueQueue, 0);
 
   return (
     <div>
       <Header />
       <div className="container__estoque">
+        <div className="btn__refresh">
+          <button
+            onClick={estoqueDebounce}
+            // onClick={estoqueQueue}
+            id="refreshBtn"
+          >
+            <BiRefresh />
+          </button>
+        </div>
         <div className="estoque__title">
           <h1>Estoque</h1>
         </div>

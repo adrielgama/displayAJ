@@ -50,6 +50,7 @@ const Login = () => {
       history.push("/home");
     } catch (err) {
       console.log(err);
+      alert("Verifique seu branchId, usuário e senha");
     }
   };
 
@@ -89,40 +90,3 @@ const Login = () => {
 };
 
 export default Login;
-
-/*
-    try {
-      const response = await api
-        .post("/Authentication", options, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => {
-          setToken(res.data.token);
-          login(res.data.token);
-          console.log(token);
-        });
-
-      console.log(response);
-      setHistory(history.pushState("/users"));
-    } catch (err) {
-      console.log("Error", err);
-    }
-
-    axios({
-          method: "POST",
-          url: `${url}Authentication`,
-          data: {
-            branchId: 1,
-            usuario: "Guaibim",
-            senha: "Gua@123",
-          },
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }).then((res) => {
-          setToken(res.data.token);
-          localStorage.setItem("token", token);
-          console.log(res.data);
-    */

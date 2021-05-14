@@ -28,3 +28,18 @@
   width: 10.5vh;
   margin-top: -1.5vh;
 }
+
+.btn__refresh button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  color: hsl(209, 82%, 52%);
+  position: absolute;
+  top: 21vh;
+  left: 60%;
+}
+
+.btn__refresh button:hover {
+  color: hsl(209, 86%, 61%);
+}
